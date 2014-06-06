@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<redirect>
+	<title>Redirect to Pentaho site</title>
+	<description>This URL forwards to Pentaho website</description>
+	<author>Alex</author>
+
+	<url><![CDATA[http://www.pentaho.com]]></url>
+	<includeRoles>true</includeRoles>
+	<rolesParameterName>rolesParameter</rolesParameterName>
+	<includeUserName>true</includeUserName>
+	<userNameParameterName>userParameter</userNameParameterName>
+	<includeTimeStamp>true</includeTimeStamp>
+</redirect>
+
