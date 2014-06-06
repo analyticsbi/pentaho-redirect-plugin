@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin title="Redirect Plugin" id="redirect">
+
+   	<static-paths>
+	     <static-path url="/redirect/resources" localFolder="resources"/>
+	</static-paths>
+	
+	
+  <content-type type="redirect" mime-type="text/xml">
+    <title>redirect</title>
+    <description>redirect definition</description>
+    <icon-url>api/repos/redirect/resources/images/redirect_icon.png</icon-url>
+    <meta-provider>com.blauadvisors.pentaho.plugins.redirect.RedirectPluginContentTypeMetaProvider</meta-provider>
+    <operations>
+      <operation><id>RUN</id></operation>
+      <operation><id>NEWWINDOW</id></operation> 
+    </operations>
+  </content-type>
+  <content-generator id="redirectPlugin" title="Redirect URL" type="redirect" class="com.blauadvisors.pentaho.plugins.redirect.RedirectPluginContentGenerator"/>
+</plugin>

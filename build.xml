@@ -1,0 +1,45 @@
+<project name="Pentaho IFRAME Plugin" basedir="." default="deploy">
+    <property file="build.properties" />
+    <echo message="deploy dest: ${pentaho.location} " />
+	<path id="master-classpath">
+	  <fileset dir="lib">
+	    <include name="*.jar"/>
+	  </fileset>
+	</path>
+
+	<target name="clean" >
+		<delete dir="build" />
+		<delete dir="dist" />	
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="build/classes" />
+		<mkdir dir="dist" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac destdir="build/classes" includeantruntime="false">
+		  <src path="src"/>
+          <classpath>
+              <fileset dir="${pentaho.location}/tomcat/webapps/pentaho/WEB-INF/lib" />
+              <fileset dir="${pentaho.location}/tomcat/lib" />
+          </classpath>
+		</javac>
+	</target>
+		
+	<target name="compress" depends="compile" >
+		<jar destfile="dist/redirect-plugin/lib/iframe-plugin.jar" basedir="build/classes" />
+	</target>
+	
+	<target name="package" depends="compile,compress">
+		<copy todir="dist/redirect-plugin" >
+			<fileset dir="package-res" />
+		</copy>
+	</target>
+	
+	<target name="deploy" depends="package" >
+		<copy todir="${pentaho.location}/pentaho-solutions/system" >
+			<fileset dir="dist" />
+		</copy>
+	</target>
+</project>	
